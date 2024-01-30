@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:16-alpine
 RUN apk add python3 make g++
 ENV NODE_ENV=production
 ENV PORT=8080
