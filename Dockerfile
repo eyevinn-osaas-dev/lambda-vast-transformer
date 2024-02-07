@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18-alpine
 RUN apk add python3 make g++
 ENV NODE_ENV=production
 ENV PORT=8080
@@ -9,5 +9,4 @@ USER node
 COPY --chown=node:node ["./", "./"]
 RUN NODE_ENV="" npm ci || npm install --include=dev --production=false
 RUN npm run build
-RUN npm install ts-node
-CMD ["npx", "ts-node", "-T", "dist/index.js"]
+CMD ["node", "dev.server.js"]
